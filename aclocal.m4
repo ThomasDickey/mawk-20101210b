@@ -1,3 +1,4 @@
+dnl $MawkId$
 dnl custom mawk macros for autoconf
 dnl
 dnl The symbols beginning "CF_MAWK_" were originally written by Mike Brennan,

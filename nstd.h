@@ -8,7 +8,8 @@
 */
 
 /*
-@Log: nstd.h,v @
+ * $MawkId$
+ * @Log: nstd.h,v @
  * Revision 1.6  1995/06/18  19:42:22  mike
  * Remove some redundant declarations and add some prototypes
  *
