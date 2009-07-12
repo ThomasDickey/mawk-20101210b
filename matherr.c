@@ -1,4 +1,3 @@
-
 /********************************************
 matherr.c
 copyright 1991, Michael D. Brennan
@@ -10,9 +9,11 @@ Mawk is distributed without warranty under the terms of
 the GNU General Public License, version 2, 1991.
 ********************************************/
 
-/*@Log: matherr.c,v @
- *Revision 1.9  1996/09/01 16:54:35  mike
- *Third try at bug fix for solaris strtod.
+/*
+ * $MawkId$
+ * @Log: matherr.c,v @
+ * Revision 1.9  1996/09/01 16:54:35  mike
+ * Third try at bug fix for solaris strtod.
  *
  * Revision 1.6  1994/12/18  20:53:43  mike
  * check NetBSD mathlib defines
