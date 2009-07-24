@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId$
+ * $MawkId: symtype.h,v 1.2 2009/07/24 00:02:11 tom Exp $
  * @Log: symtype.h,v @
  * Revision 1.6  1996/02/01  04:39:43  mike
  * dynamic array scheme
@@ -51,6 +51,8 @@ the GNU General Public License, version 2, 1991.
 
 #ifndef  SYMTYPE_H
 #define  SYMTYPE_H
+
+#include "types.h"
 
 /* struct to hold info about builtins */
 typedef struct {
