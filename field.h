@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId$
+ * $MawkId: field.h,v 1.2 2009/07/24 00:05:27 tom Exp $
  * @Log: field.h,v @
  * Revision 1.2  1995/06/18  19:42:16  mike
  * Remove some redundant declarations and add some prototypes
@@ -30,6 +30,9 @@ the GNU General Public License, version 2, 1991.
 
 #ifndef  MAWK_FIELD_H
 #define  MAWK_FIELD_H   1
+
+#include "nstd.h"
+#include "types.h"
 
 void set_field0(char *, unsigned);
 void split_field0(void);
