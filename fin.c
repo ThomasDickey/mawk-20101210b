@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId: fin.c,v 1.5 2009/07/12 10:49:49 tom Exp $
+ * $MawkId: fin.c,v 1.6 2009/07/23 23:16:47 tom Exp $
  * @Log: fin.c,v @
  * Revision 1.10  1995/12/24  22:23:22  mike
  * remove errmsg() from inside FINopen
@@ -263,7 +263,9 @@ FINgets(FIN * fin, unsigned *len_p)
 	break;
 
     case SEP_STR:
-	q = str_str(p, ((STRING *) rs_shadow.ptr)->str,
+	q = str_str(p,
+		    ((STRING *) rs_shadow.ptr)->str,
+		    ((STRING *) rs_shadow.ptr)->len,
 		    match_len = ((STRING *) rs_shadow.ptr)->len);
 	break;
 
