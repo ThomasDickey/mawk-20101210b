@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId: memory.c,v 1.3 2009/07/26 14:20:04 tom Exp $
+ * $MawkId: memory.c,v 1.4 2009/07/26 17:02:58 tom Exp $
  * @Log: memory.c,v @
  * Revision 1.2  1993/07/17  13:23:08  mike
  * indent and general code cleanup
@@ -79,7 +79,7 @@ new_STRING1(const char *s, unsigned len)
 /* convert char* to STRING* */
 
 STRING *
-new_STRING(char *s)
+new_STRING(const char *s)
 {
 
     if (s[0] == 0) {
