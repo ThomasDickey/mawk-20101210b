@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId: bi_vars.c,v 1.3 2009/07/12 10:49:08 tom Exp $
+ * $MawkId: bi_vars.c,v 1.4 2009/07/12 19:27:07 tom Exp $
  * @Log: bi_vars.c,v @
  * Revision 1.1.1.1  1993/07/03  18:58:09  mike
  * move source to cvs
@@ -37,7 +37,7 @@ CELL bi_vars[NUM_BI_VAR];
 
 /* the order here must match the order in bi_vars.h */
 
-static char *bi_var_names[NUM_BI_VAR] =
+static const char *bi_var_names[NUM_BI_VAR] =
 {
     "NR",
     "FNR",
