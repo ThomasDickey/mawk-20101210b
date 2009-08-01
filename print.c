@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId: print.c,v 1.8 2009/07/27 15:32:48 tom Exp $
+ * $MawkId: print.c,v 1.9 2009/08/01 00:53:15 tom Exp $
  * @Log: print.c,v @
  * Revision 1.7  1996/09/18 01:04:36  mike
  * Check ferror() after print and printf.
@@ -244,6 +244,11 @@ make_sfmt(const char *format,
 	    break;
 	case '0':
 	    *flags |= sfmtZERO;
+	    break;
+	case '+':
+	    /* FALLTHRU */
+	case '#':
+	    /* ignore for %s */
 	    break;
 	default:
 	    ok_flag = 0;
