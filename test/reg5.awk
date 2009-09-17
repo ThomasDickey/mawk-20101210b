@@ -1,4 +1,4 @@
-# $MawkId: reg4.awk,v 1.4 2009/07/12 22:23:58 tom Exp $
+# $MawkId: reg5.awk,v 1.1 2009/07/27 18:55:24 tom Exp $
 BEGIN {
 	pat1="([[:upper:][:digit:]])+(_[[:upper:][:digit:]]+)+"
 	pat2="0x[[:xdigit:]]+"
@@ -22,4 +22,5 @@ BEGIN {
 		printf "%d..%d:%s\n", RSTART, RLENGTH, $0
 		printf ("reg5.3<<%s>>\n",substr($0,RSTART,RLENGTH))
 	}
+	# add patterns like those in reg4.awk which exercise [, ] at beginning
 }
