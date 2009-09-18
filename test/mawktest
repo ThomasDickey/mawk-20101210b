@@ -1,5 +1,5 @@
 #!/bin/sh
-# $MawkId: mawktest,v 1.7 2009/07/27 18:56:49 tom Exp $
+# $MawkId: mawktest,v 1.8 2009/09/18 00:40:07 tom Exp $
 
 # This is a simple test that a new made mawk seems to
 # be working OK.
@@ -26,6 +26,10 @@ PATH=.:$PATH
 # find out which mawk we're testing
 mawk -W version
 
+NULLS=`mawk -W version 2>&1 |fgrep 'internal regex' 2>/dev/null`
+if test -n "$NULLS" ; then
+	echo "** mawk supports matches with NUL bytes"
+fi
 
 #################################
 echo
