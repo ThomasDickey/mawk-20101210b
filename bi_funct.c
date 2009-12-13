@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId: bi_funct.c,v 1.18 2009/07/27 22:19:33 tom Exp $
+ * $MawkId: bi_funct.c,v 1.19 2009/07/28 23:23:47 tom Exp $
  * @Log: bi_funct.c,v @
  * Revision 1.9  1996/01/14  17:16:11  mike
  * flush_all_output() before system()
@@ -577,7 +577,7 @@ bi_srand(CELL * sp)
 	cellcpy(sp, &cseed);
 	cell_destroy(&cseed);
 	cseed.type = C_DOUBLE;
-	cseed.dval = (double) time((time_t *) 0);
+	cseed.dval = time((time_t *) 0);
     } else {			/* user seed */
 	sp--;
 	/* swap cseed and *sp ; don't need to adjust ref_cnts */
