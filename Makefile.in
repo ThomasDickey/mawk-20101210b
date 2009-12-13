@@ -1,4 +1,4 @@
-# $MawkId: Makefile.in,v 1.21 2009/09/20 22:47:54 tom Exp $
+# $MawkId: Makefile.in,v 1.22 2009/12/13 18:01:54 Jonathan.Nieder Exp $
 # Makefile-template for MAWK
 
 SHELL=/bin/sh
@@ -109,6 +109,7 @@ uninstall :
 	rm -f $(MAWKMAN)
 
 clean :
+	rm -f y.tab.c y.tab.h makescan.exe
 	rm -f *$o test/$(PROG) *core* test/*core* $(PROG)
 
 distclean :  clean
