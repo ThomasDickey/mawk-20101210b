@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId: bi_vars.c,v 1.5 2009/07/27 15:24:25 tom Exp $
+ * $MawkId: bi_vars.c,v 1.6 2009/09/15 23:28:15 tom Exp $
  * @Log: bi_vars.c,v @
  * Revision 1.1.1.1  1993/07/03  18:58:09  mike
  * move source to cvs
@@ -48,7 +48,7 @@ static const char *bi_var_names[NUM_BI_VAR] =
     "RLENGTH",
     "RSTART",
     "SUBSEP"
-#ifdef MSDOS
+#if USE_BINMODE
     ,"BINMODE"
 #endif
 };
@@ -88,7 +88,7 @@ bi_vars_init(void)
     NR->type = FNR->type = C_DOUBLE;
     /* dval is already 0.0 */
 
-#ifdef  MSDOS
+#if USE_BINMODE
     BINMODE->type = C_DOUBLE;
 #endif
 }
