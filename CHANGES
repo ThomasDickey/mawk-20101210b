@@ -1,8 +1,12 @@
--- $MawkId: CHANGES,v 1.106 2010/02/21 20:22:26 Guido.Berhoerster Exp $
+-- $MawkId: CHANGES,v 1.107 2010/02/21 20:31:46 tom Exp $
 
 Changes by Thomas E Dickey <dickey@invisible-island.net>
 
 20100221
+	+ increase MIN_SPRINTF, used as limit on regular-expression size, to
+	  match the MAX_SPLIT value, i.e., slightly more than doubling the size
+	  (report by Markus Gnam).
+
 	+ further modify makefile to build outside the source-tree.
 
 	+ modify makefile and mawktest to use relative path again, since the
