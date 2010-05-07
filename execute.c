@@ -394,9 +394,11 @@ execute(INST * cdp,		/* code ptr, start execution here */
 	       has an ARRAY in the ptr field, replace expr
 	       with  array[expr]
 	     */
-	    cp = array_find((ARRAY) fp[(cdp++)->op].ptr, sp, CREATE);
-	    cell_destroy(sp);
-	    cellcpy(sp, cp);
+	    if (fp != 0) {
+		cp = array_find((ARRAY) fp[(cdp++)->op].ptr, sp, CREATE);
+		cell_destroy(sp);
+		cellcpy(sp, cp);
+	    }
 	    break;
 
 	case LAE_PUSHA:
@@ -405,9 +407,11 @@ execute(INST * cdp,		/* code ptr, start execution here */
 	       has an ARRAY in the ptr field, replace expr
 	       with  & array[expr]
 	     */
-	    cp = array_find((ARRAY) fp[(cdp++)->op].ptr, sp, CREATE);
-	    cell_destroy(sp);
-	    sp->ptr = (PTR) cp;
+	    if (fp != 0) {
+		cp = array_find((ARRAY) fp[(cdp++)->op].ptr, sp, CREATE);
+		cell_destroy(sp);
+		sp->ptr = (PTR) cp;
+	    }
 	    break;
 
 	case LA_PUSHA:
@@ -415,8 +419,10 @@ execute(INST * cdp,		/* code ptr, start execution here */
 	       has an ARRAY in the ptr field. Push this ARRAY
 	       on the eval stack
 	     */
-	    inc_sp();
-	    sp->ptr = fp[(cdp++)->op].ptr;
+	    if (fp != 0) {
+		inc_sp();
+		sp->ptr = fp[(cdp++)->op].ptr;
+	    }
 	    break;
 
 	case SET_ALOOP:
@@ -1299,7 +1305,7 @@ execute(INST * cdp,		/* code ptr, start execution here */
 
 		/* cleanup the callee's arguments */
 		/* putting return value at top of eval stack */
-		if (sp >= nfp) {
+		if ((type_p != 0) && (sp >= nfp)) {
 		    cp = sp + 1;	/* cp -> the function return */
 
 		    do {
