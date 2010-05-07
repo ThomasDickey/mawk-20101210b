@@ -180,7 +180,7 @@ REmatch(char *str,		/* string to test */
 	goto reswitch;
 
     case M_STR + U_ON + END_ON:
-	t = (str_end - s) - m->s_len;
+	t = (int) ((str_end - s) - m->s_len);
 	if (t < 0 || memcmp(ts = s + t, m->s_data.str, m->s_len)) {
 	    goto refill;
 	}
