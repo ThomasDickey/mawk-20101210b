@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId: scan.c,v 1.18 2010/01/27 20:15:52 Jonathan.Nieder Exp $
+ * $MawkId: scan.c,v 1.19 2010/02/21 22:29:19 tom Exp $
  * @Log: scan.c,v @
  * Revision 1.8  1996/07/28 21:47:05  mike
  * gnuish patch
@@ -1012,7 +1012,7 @@ collect_RE(void)
 	switch (scan_code[c]) {
 	case SC_POW:
 	    /* Handle [^]] and [^^] correctly. */
-	    if (p - 1 == first && first[-1] == '[') {
+	    if ((p - 1) == first && first != 0 && first[-1] == '[') {
 		first = p;
 	    }
 	    break;
