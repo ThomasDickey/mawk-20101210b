@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId: files.c,v 1.13 2010/02/21 01:32:50 tom Exp $
+ * $MawkId: files.c,v 1.14 2010/02/21 14:54:07 tom Exp $
  *
  * @Log: files.c,v @
  * Revision 1.9  1996/01/14  17:14:10  mike
@@ -297,7 +297,7 @@ file_flush(STRING * sval)
 {
     int ret = -1;
     register FILE_NODE *p = file_list;
-    unsigned len = sval->len;
+    size_t len = sval->len;
     char *str = sval->str;
 
     if (len == 0) {
