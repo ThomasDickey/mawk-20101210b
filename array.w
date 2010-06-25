@@ -713,7 +713,7 @@ static void convert_split_array_to_table(ARRAY A)
    unsigned i ; /* walks cells */
    DUAL_LINK *table ;
    unsigned j ; /* walks table */
-   unsigned entry_limit = A->limit ;
+   size_t entry_limit = A->limit ;
    <<determine the size of the hash table and allocate>>
    /* insert each cells[i] in the new hash table on an ilist */
    for(i=0, j=1; i < A->size; i++) {
@@ -1078,7 +1078,7 @@ This file was generated with the command
 
 <<mawk blurb>>=
 
-$MawkId: array.w,v 1.12 2010/05/07 09:26:37 tom Exp $
+$MawkId: array.w,v 1.13 2010/05/07 22:20:12 tom Exp $
 
 copyright 1991-96, Michael D. Brennan
 
