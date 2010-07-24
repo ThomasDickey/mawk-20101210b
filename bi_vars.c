@@ -92,3 +92,19 @@ bi_vars_init(void)
     BINMODE->type = C_DOUBLE;
 #endif
 }
+
+#ifdef NO_LEAKS
+void
+bi_vars_leaks(void)
+{
+    int n;
+
+    for (n = 0; n < NUM_BI_VAR; ++n) {
+	switch (bi_vars[n].type) {
+	case C_STRING:
+	    free_STRING(string(&bi_vars[n]));
+	    break;
+	}
+    }
+}
+#endif
