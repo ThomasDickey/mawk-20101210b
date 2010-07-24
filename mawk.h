@@ -200,14 +200,11 @@ extern double strtod_with_ovf_bug(const char *, char **);
 #define strtod  strtod_with_ovf_bug
 #endif
 
-#ifdef OPT_TRACE
+#if OPT_TRACE > 0
 extern void Trace(const char *,...) GCC_PRINTFLIKE(1,2);
 #define TRACE(params) Trace params
 #if OPT_TRACE > 1
 #define TRACE2(params) Trace params
-#endif
-#ifdef NO_LEAKS
-extern void trace_leaks(void);
 #endif
 #endif
 
@@ -217,6 +214,15 @@ extern void trace_leaks(void);
 
 #ifndef TRACE2
 #define TRACE2(params)		/* nothing */
+#endif
+
+#ifdef NO_LEAKS
+extern void bi_vars_leaks(void);
+extern void field_leaks(void);
+extern void files_leaks(void);
+extern void hash_leaks(void);
+extern void trace_leaks(void);
+extern void zmalloc_leaks(void);
 #endif
 
 #endif /* MAWK_H */
