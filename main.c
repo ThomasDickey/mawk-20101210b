@@ -82,6 +82,7 @@ void
 mawk_exit(int x)
 {
 #ifdef NO_LEAKS
+    hash_leaks();
     zmalloc_leaks();
 #endif
 
