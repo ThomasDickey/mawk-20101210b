@@ -71,4 +71,8 @@ void set_binmode(int);
 void stdout_init(void);
 #endif
 
+#ifdef NO_LEAKS
+extern void files_leaks(void);
+#endif
+
 #endif /* MAWK_FILES_H */
