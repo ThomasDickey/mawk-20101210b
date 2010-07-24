@@ -30,15 +30,11 @@ the GNU General Public License, version 2, 1991.
 
 #include "nstd.h"
 
-PTR zmalloc(size_t);
-void zfree(PTR, size_t);
-PTR zrealloc(PTR, size_t, size_t);
+extern PTR zmalloc(size_t);
+extern void zfree(PTR, size_t);
+extern PTR zrealloc(PTR, size_t, size_t);
 
 #define ZMALLOC(type)  ((type*)zmalloc(sizeof(type)))
 #define ZFREE(p)	zfree(p,sizeof(*(p)))
-
-#ifdef NO_LEAKS
-void zmalloc_leaks(void);
-#endif
 
 #endif /* ZMALLOC_H */
