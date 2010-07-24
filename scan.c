@@ -960,7 +960,7 @@ collect_string(void)
 	case 0:		/* unterminated string */
 	    compile_error(
 			     "runaway string constant \"%.10s ...",
-			     string_buff, token_lineno);
+			     string_buff);
 	    mawk_exit(2);
 
 	case SC_ESCAPE:
@@ -1066,7 +1066,7 @@ collect_RE(void)
 	case 0:		/* unterminated re */
 	    compile_error(
 			     "runaway regular expression /%.10s ...",
-			     string_buff, token_lineno);
+			     string_buff);
 	    mawk_exit(2);
 
 	case SC_ESCAPE:
