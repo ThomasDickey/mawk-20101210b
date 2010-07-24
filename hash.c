@@ -67,8 +67,6 @@ typedef struct hash {
     SYMTAB symtab;
 } HASHNODE;
 
-static HASHNODE *delete(const char *);
-
 static HASHNODE *hash_table[HASH_PRIME];
 
 /*
@@ -258,3 +256,18 @@ reverse_find(int type, PTR ptr)
     }
     return uk;
 }
+
+#ifdef NO_LEAKS
+void
+hash_leaks(void)
+{
+    int i;
+    HASHNODE *p;
+
+    for (i = 0; i < HASH_PRIME; i++) {
+	while ((p = hash_table[i]) != 0) {
+	    free(delete(p->symtab.name));
+	}
+    }
+}
+#endif
