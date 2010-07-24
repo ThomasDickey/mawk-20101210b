@@ -662,3 +662,14 @@ set_binmode(int x)
 }
 
 #endif /* USE_BINMODE */
+
+#ifdef NO_LEAKS
+void
+field_leaks(void)
+{
+    free_STRING(string(CONVFMT));
+    free_STRING(string(FS));
+    free_STRING(string(OFMT));
+    free_STRING(string(RS));
+}
+#endif
