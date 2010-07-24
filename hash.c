@@ -266,7 +266,7 @@ hash_leaks(void)
 
     for (i = 0; i < HASH_PRIME; i++) {
 	while ((p = hash_table[i]) != 0) {
-	    free(delete(p->symtab.name));
+	    zfree(delete(p->symtab.name), sizeof(HASHNODE));
 	}
     }
 }
