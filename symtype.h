@@ -10,7 +10,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId: symtype.h,v 1.6 2009/12/13 19:36:24 Jonathan.Nieder Exp $
+ * $MawkId: symtype.h,v 1.7 2010/05/07 08:18:41 tom Exp $
  * @Log: symtype.h,v @
  * Revision 1.6  1996/02/01  04:39:43  mike
  * dynamic array scheme
@@ -187,5 +187,9 @@ void restore_ids(void);
 
 /* error.c */
 void type_error(SYMTAB *);
+
+#ifdef NO_LEAKS
+void hash_leaks(void);
+#endif
 
 #endif /* SYMTYPE_H */
