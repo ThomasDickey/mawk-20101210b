@@ -90,8 +90,10 @@ mawk_exit(int x)
 #endif
 
 #ifdef NO_LEAKS
+    bi_vars_leaks();
     hash_leaks();
     files_leaks();
+    field_leaks();
     zmalloc_leaks();
 #ifdef OPT_TRACE
     trace_leaks();
