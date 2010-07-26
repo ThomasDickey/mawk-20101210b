@@ -221,6 +221,7 @@ extern void bi_vars_leaks(void);
 extern void field_leaks(void);
 extern void files_leaks(void);
 extern void hash_leaks(void);
+extern void rexp_leaks(void);
 extern void trace_leaks(void);
 extern void zmalloc_leaks(void);
 #endif

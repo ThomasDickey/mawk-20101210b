@@ -100,6 +100,7 @@ mawk_exit(int x)
 #endif
 
 #ifdef NO_LEAKS
+    rexp_leaks();
     array_leaks();
     bi_vars_leaks();
     hash_leaks();
