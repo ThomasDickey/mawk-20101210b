@@ -44,6 +44,7 @@ the GNU General Public License, version 2, 1991.
 /*  main.c  */
 
 #include "mawk.h"
+#include "bi_vars.h"
 #include "init.h"
 #include "code.h"
 #include "files.h"
@@ -78,6 +79,15 @@ main(int argc, char **argv)
     return 0;
 }
 
+#ifdef NO_LEAKS
+static void
+array_leaks(void)
+{
+    array_clear(Argv);
+    ZFREE(Argv);
+}
+#endif
+
 void
 mawk_exit(int x)
 {
@@ -90,6 +100,7 @@ mawk_exit(int x)
 #endif
 
 #ifdef NO_LEAKS
+    array_leaks();
     bi_vars_leaks();
     hash_leaks();
     files_leaks();
