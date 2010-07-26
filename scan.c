@@ -314,6 +314,10 @@ yylex(void)
 
     token_lineno = lineno;
 
+#ifdef NO_LEAKS
+    memset(&yylval, 0, sizeof(yylval));
+#endif
+
   reswitch:
 
     switch (scan_code[c = next()]) {
@@ -1098,3 +1102,14 @@ collect_RE(void)
     free_STRING(sval);
     return RE;
 }
+
+#ifdef NO_LEAKS
+void
+scan_leaks(void)
+{
+    if (yylval.ptr) {
+	free(yylval.ptr);
+	yylval.ptr = 0;
+    }
+}
+#endif

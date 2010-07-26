@@ -100,6 +100,8 @@ mawk_exit(int x)
 #endif
 
 #ifdef NO_LEAKS
+    code_leaks();
+    scan_leaks();
     rexp_leaks();
     array_leaks();
     bi_vars_leaks();
