@@ -261,9 +261,9 @@ execute(INST * cdp,		/* code ptr, start execution here */
 			 SAMESEG(cp, field) &&
 #endif
 			 cp >= NF && cp <= LAST_PFIELD)) {
-		    /* its a real field $1, $2 ...
-		       If its greater than $NF, we have to
-		       make sure its set to ""  so that
+		    /* it is a real field $1, $2 ...
+		       If it is greater than $NF, we have to
+		       make sure it is set to ""  so that
 		       (++|--) and g?sub() work right
 		     */
 		    t = field_addr_to_index(cp);
