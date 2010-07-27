@@ -140,7 +140,7 @@ extern unsigned rt_nr, rt_fnr;	/* ditto */
 #ifdef   DEBUG
 #define cell_destroy(cp)  DB_cell_destroy(cp)
 #else
-
+/* Note: type is only C_STRING to C_MBSTRN */
 #define cell_destroy(cp) \
 	do { \
 	    if ( (cp)->type >= C_STRING && \
