@@ -934,7 +934,7 @@ static size_t gsub_max;
 static GSUB_STK *gsub_stk;
 static unsigned repl_cnt;	/* number of global replacements */
 
-#ifdef OPT_TRACE
+#if OPT_TRACE > 0
 static const char *
 indent(int level)
 {
@@ -1164,6 +1164,7 @@ new_gsub(PTR re, int level)
     } else {
 	/* no match */
 	ThisResult = new_STRING1(ThisTarget, ThisTargetLen);
+	repl_destroy(&ThisReplace);
     }
 
     switch (ThisBranch) {
