@@ -83,8 +83,10 @@ main(int argc, char **argv)
 static void
 array_leaks(void)
 {
-    array_clear(Argv);
-    ZFREE(Argv);
+    if (Argv != 0) {
+	array_clear(Argv);
+	ZFREE(Argv);
+    }
 }
 #endif
 
