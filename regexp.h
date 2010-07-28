@@ -26,6 +26,7 @@ the GNU General Public License, version 2, 1991.
 #include "nstd.h"
 
 PTR REcompile(char *, size_t);
+void REdestroy(PTR);
 int REtest(char *, size_t, PTR);
 char *REmatch(char *, size_t, PTR, size_t *);
 void REmprint(PTR, FILE *);
