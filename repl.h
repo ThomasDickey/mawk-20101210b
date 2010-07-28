@@ -28,7 +28,7 @@ the GNU General Public License, version 2, 1991.
 #include "types.h"
 
 typedef struct re_data {
-    int anchored;	/* use to limit recursion in gsub */
+    int anchored;		/* use to limit recursion in gsub */
     PTR compiled;
 } RE_DATA;
 
@@ -44,6 +44,7 @@ char *re_uncompile(PTR);
 
 CELL *repl_compile(STRING *);
 char *repl_uncompile(CELL *);
+void re_destroy(CELL *);
 void repl_destroy(CELL *);
 CELL *replv_cpy(CELL *, CELL *);
 CELL *replv_to_repl(CELL *, STRING *);
