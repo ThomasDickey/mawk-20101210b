@@ -1,5 +1,5 @@
 /*
- * $MawkId: regexp_system.c,v 1.31 2010/06/25 20:43:03 tom Exp $
+ * $MawkId: regexp_system.c,v 1.32 2010/07/24 11:49:26 tom Exp $
  */
 #include <sys/types.h>
 #include <stdio.h>
@@ -314,6 +314,11 @@ REcompile(char *regexp, size_t len)
 	}
     }
     return re;
+}
+
+void
+REdestroy(PTR ptr)
+{
 }
 
 /*
