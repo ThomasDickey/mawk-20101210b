@@ -302,19 +302,19 @@ free_codes(INST * base, size_t size)
 	case _MATCH0:
 	case _MATCH1:
 	case _PUSHC:
-	case _PUSHD:
-	case _PUSHI:
-	case _PUSHS:
 	    ++cdp;		/* skip pointer */
 	    cp = (CELL *) (cdp->ptr);
 	    TRACE(("\tparam %p type %d\n", cp, cp->type));
 	    free_cell_data(cp);
 	    break;
 	case A_PUSHA:
-	case _PUSHA:
 	case _BUILTIN:
 	case _PRINT:
+	case _PUSHA:
+	case _PUSHD:
+	case _PUSHI:
 	case _PUSHINT:
+	case _PUSHS:
 	    ++cdp;		/* skip value */
 	    TRACE(("\tparam %p\n", cdp->ptr));
 	    break;
