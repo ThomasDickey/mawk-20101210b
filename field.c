@@ -265,6 +265,7 @@ split_field0(void)
     while (cnt > 0) {
 	cell_destroy(field + cnt);
 	field[cnt].ptr = (PTR) split_buff[cnt - 1];
+	USED_SPLIT_BUFF(cnt - 1);
 	field[cnt--].type = C_MBSTRN;
     }
 
