@@ -272,7 +272,9 @@ free_cell_data(CELL * cp)
     case C_MBSTRN:
     case C_STRING:
     case C_STRNUM:
-	cell_destroy(cp);
+	if (cp >= (field + nf) || (cp < field)) {
+	    cell_destroy(cp);
+	}
 	break;
     }
 }
