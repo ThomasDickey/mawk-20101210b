@@ -99,7 +99,7 @@ code_shrink(CODEBLOCK * p, size_t *sizep)
     *sizep = newsize;
 
     retval = (INST *) zrealloc(p->base, oldsize, newsize);
-    TRACE(("code_shrink old %lu, new %lu %p\n", oldsize, newsize, retval));
+    TRACE(("code_shrink old %p %lu, new %p %lu\n", p->base, oldsize, retval, newsize));
     ZFREE(p);
     return retval;
 }
@@ -165,6 +165,7 @@ set_code(void)
 	execution_start = main_start;
     } else {			/* only BEGIN */
 	zfree(code_base, INST_BYTES(PAGESZ));
+	code_base = 0;
 	ZFREE(main_code_p);
     }
 
@@ -403,10 +404,10 @@ code_leaks(void)
 	free_codes(main_start, main_size);
 	main_start = 0;
 	main_size = 0;
-    } else if (code_base != 0) {
-	free_codes(code_base, INST_BYTES(code_limit - code_base));
-	code_base = 0;
-	code_limit = 0;
+    } else if (begin_start != 0) {
+	free_codes(begin_start, begin_size);
+	begin_start = 0;
+	begin_size = 0;
     }
 }
 #endif
