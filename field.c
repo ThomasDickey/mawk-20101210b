@@ -668,10 +668,15 @@ set_binmode(int x)
 void
 field_leaks(void)
 {
+    int n;
+
     free_STRING(string(CONVFMT));
     free_STRING(string(FS));
     free_STRING(string(OFMT));
     free_STRING(string(RS));
     cell_destroy(&field[0]);
+    for (n = 1; n < nf; ++n) {
+	cell_destroy(&field[n]);
+    }
 }
 #endif
