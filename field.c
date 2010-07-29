@@ -671,5 +671,6 @@ field_leaks(void)
     free_STRING(string(FS));
     free_STRING(string(OFMT));
     free_STRING(string(RS));
+    cell_destroy(&field[0]);
 }
 #endif
