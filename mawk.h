@@ -228,4 +228,14 @@ extern void trace_leaks(void);
 extern void zmalloc_leaks(void);
 #endif
 
+/*
+ * Sometimes split_buff[] pointers are moved rather than copied.
+ * Optimize-out the assignment to clear the pointer in the array.
+ */
+#ifdef NO_LEAKS
+#define USED_SPLIT_BUFF(n) split_buff[n] = 0
+#else
+#define USED_SPLIT_BUFF(n)	/* nothing */
+#endif
+
 #endif /* MAWK_H */
