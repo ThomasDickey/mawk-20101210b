@@ -207,13 +207,16 @@ REPL_compile(STRING * sval)
     if (count == 1 && split_buff[0]) {
 	cp->type = C_REPL;
 	cp->ptr = (PTR) split_buff[0];
+	USED_SPLIT_BUFF(0);
     } else {
 	STRING **sp = (STRING **)
 	(cp->ptr = zmalloc(sizeof(STRING *) * count));
 	VCount j = 0;
 
-	while (j < count)
+	while (j < count) {
 	    *sp++ = split_buff[j++];
+	    USED_SPLIT_BUFF(j - 1);
+	}
 
 	cp->type = C_REPLV;
 	cp->vcnt = count;
