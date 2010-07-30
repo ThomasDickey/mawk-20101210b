@@ -1,5 +1,6 @@
-/* $MawkId* */
+/* $MawkId$ */
 #ifdef LOCAL_REGEXP
+#		include "mawk.h"
 #		include "rexp.c"
 #		include "rexp0.c"
 #		include "rexp1.c"
