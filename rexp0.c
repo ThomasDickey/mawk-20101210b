@@ -721,7 +721,7 @@ store_bvp(
 	bv_next++;
     } else {
 	/* we already have it */
-	free(bvp);
+	RE_free(bvp);
     }
 
     return *p;
