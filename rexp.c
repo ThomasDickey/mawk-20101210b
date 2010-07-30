@@ -218,7 +218,7 @@ REcompile(char *re, size_t len)
 void
 REdestroy(PTR ptr)
 {
-    free(ptr);
+    RE_free(ptr);
 }
 
 /* getting here means a logic flaw or unforeseen case */
