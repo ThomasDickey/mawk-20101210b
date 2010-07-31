@@ -343,8 +343,8 @@ free_codes(const char *tag, INST * base, size_t size)
 	    cdp += 4;		/* PAT1 */
 	    break;
 	case _CALL:
-	    TRACE(("\tskipping %d\n", 1 + cdp[1].op));
-	    cdp += 1 + cdp[1].op;
+	    TRACE(("\tskipping %d\n", 1 + cdp[2].op));
+	    cdp += 1 + cdp[2].op;
 	    break;
 	case A_DEL:
 	case A_TEST:
