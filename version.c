@@ -147,5 +147,5 @@ print_version(void)
     fprintf(stderr, fmt, "max NF", (long) MAX_FIELD);
     fprintf(stderr, fmt, "sprintf buffer", (long) SPRINTF_SZ);
     print_aux_limits();
-    exit(0);
+    mawk_exit(0);
 }
