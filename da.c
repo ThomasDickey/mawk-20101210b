@@ -414,8 +414,9 @@ find_bi_name(PF_CP p)
     }
     /* next check some special cases */
     for (i = 0; special_cases[i].action; i++) {
-	if (special_cases[i].action == p)
+	if (special_cases[i].action == p) {
 	    return special_cases[i].name;
+	}
     }
 
     return "unknown builtin";
@@ -465,6 +466,7 @@ static OP_NAME other_codes[] = {
     { L_PUSHA,    "l_pusha" },
     { L_PUSHI,    "l_pushi" },
     { SET_ALOOP,  "set_al" },
+    { _CALL,      "call" },
     { _JMP,       "jmp" },
     { _JNZ,       "jnz" },
     { _JZ,        "jz" },
@@ -490,7 +492,7 @@ da_op_name(INST * cdp)
     const char *result = 0;
 
     if (cdp->op == _BUILTIN) {
-	result = find_bi_name((PF_CP) cdp->ptr);
+	result = find_bi_name((PF_CP) cdp[1].ptr);
     } else if (cdp->op == _PRINT) {
 	result = ((PF_CP) cdp->ptr == bi_printf
 		  ? "printf"
