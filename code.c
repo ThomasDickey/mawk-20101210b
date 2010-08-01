@@ -278,7 +278,7 @@ free_cell_data(CELL * cp)
     }
 }
 
-static void
+void
 free_codes(const char *tag, INST * base, size_t size)
 {
     INST *cdp;
@@ -301,18 +301,22 @@ free_codes(const char *tag, INST * base, size_t size)
 	case F_PUSHA:
 	case LAE_PUSHA:
 	case LAE_PUSHI:
-	case LA_PUSHA:
-	case L_PUSHA:
-	case L_PUSHI:
 	case _MATCH0:
 	case _MATCH1:
 	case _PUSHC:
 	    ++cdp;		/* skip pointer */
 	    cp = (CELL *) (cdp->ptr);
-	    TRACE(("\tparam %p type %d\n", cp, cp->type));
-	    free_cell_data(cp);
+	    if (cp != 0) {
+		TRACE(("\tparam %p type %d\n", cp, cp->type));
+		free_cell_data(cp);
+	    } else {
+		TRACE(("\tparam %p type ??\n", cp));
+	    }
 	    break;
 	case A_PUSHA:
+	case L_PUSHA:
+	case L_PUSHI:
+	case LA_PUSHA:
 	case _BUILTIN:
 	case _PRINT:
 	case _PUSHA:
