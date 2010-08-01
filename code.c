@@ -297,7 +297,6 @@ free_codes(const char *tag, INST * base, size_t size)
 	case AE_PUSHA:
 	case AE_PUSHI:
 	case A_CAT:
-	case F_PUSHA:
 	case LAE_PUSHA:
 	case LAE_PUSHI:
 	case _MATCH0:
@@ -365,6 +364,7 @@ free_codes(const char *tag, INST * base, size_t size)
 	case F_POW_ASG:
 	case F_PRE_DEC:
 	case F_PRE_INC:
+	case F_PUSHA:
 	case F_SUB_ASG:
 	case NF_PUSHI:
 	case OL_GL:
