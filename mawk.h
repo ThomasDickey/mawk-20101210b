@@ -218,6 +218,7 @@ extern void Trace(const char *,...) GCC_PRINTFLIKE(1,2);
 
 #ifdef NO_LEAKS
 extern const char *da_op_name(INST *);
+extern void free_codes(const char *, INST *, size_t);
 extern void bi_vars_leaks(void);
 extern void code_leaks(void);
 extern void field_leaks(void);

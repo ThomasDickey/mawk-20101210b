@@ -1152,13 +1152,12 @@ static void
 resize_fblock(FBLOCK *fbp)
 {
     CODEBLOCK *p = ZMALLOC(CODEBLOCK) ;
-    size_t dummy ;
 
     code2op(_RET0, _HALT) ;
     /* make sure there is always a return */
 
     *p = active_code ;
-    fbp->code = code_shrink(p, &dummy) ;
+    fbp->code = code_shrink(p, &fbp->size) ;
     /* code_shrink() zfrees p */
 
     if ( dump_code_flag )
