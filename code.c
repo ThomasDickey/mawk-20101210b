@@ -298,7 +298,6 @@ free_codes(const char *tag, INST * base, size_t size)
 	case AE_PUSHI:
 	case A_CAT:
 	case LAE_PUSHA:
-	case LAE_PUSHI:
 	case _MATCH0:
 	case _MATCH1:
 	case _PUSHC:
@@ -350,7 +349,6 @@ free_codes(const char *tag, INST * base, size_t size)
 	    break;
 	case A_DEL:
 	case A_TEST:
-	case ALOOP:
 	case DEL_A:
 	case FE_PUSHA:
 	case FE_PUSHI:
@@ -415,6 +413,8 @@ free_codes(const char *tag, INST * base, size_t size)
 	case _LJZ:
 	case _LJNZ:
 	case _JMP:
+	case ALOOP:
+	case LAE_PUSHI:
 	case SET_ALOOP:
 	    ++cdp;		/* cdp->op is literal param */
 	    break;
