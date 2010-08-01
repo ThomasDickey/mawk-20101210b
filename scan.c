@@ -1109,6 +1109,7 @@ collect_RE(void)
 void
 scan_leaks(void)
 {
+    TRACE(("scan_leaks\n"));
     if (yylval.ptr) {
 	free(yylval.ptr);
 	yylval.ptr = 0;
