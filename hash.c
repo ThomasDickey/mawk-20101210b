@@ -264,9 +264,17 @@ hash_leaks(void)
     int i;
     HASHNODE *p;
 
+    TRACE(("hash_leaks\n"));
     for (i = 0; i < HASH_PRIME; i++) {
 	while ((p = hash_table[i]) != 0) {
-	    zfree(delete(p->symtab.name), sizeof(HASHNODE));
+	    TRACE(("...deleting hash %s %d\n", p->symtab.name, p->symtab.type));
+	    p = delete(p->symtab.name);
+	    switch (p->symtab.type) {
+	    case ST_FUNCT:
+		zfree(p->symtab.stval.fbp, sizeof(FBLOCK));
+		break;
+	    }
+	    zfree(p, sizeof(HASHNODE));
 	}
     }
 }
