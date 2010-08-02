@@ -300,7 +300,6 @@ free_codes(const char *tag, INST * base, size_t size)
 	case LAE_PUSHA:
 	case _MATCH0:
 	case _MATCH1:
-	case _PUSHC:
 	    ++cdp;		/* skip pointer */
 	    cp = (CELL *) (cdp->ptr);
 	    if (cp != 0) {
@@ -322,6 +321,7 @@ free_codes(const char *tag, INST * base, size_t size)
 	    ++cdp;		/* skip value */
 	    TRACE(("\tparam %p\n", cdp->ptr));
 	    break;
+	case _PUSHC:
 	case _PUSHD:
 	    ++cdp;		/* skip value */
 	    TRACE(("\tparam %p\n", cdp->ptr));
