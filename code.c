@@ -321,7 +321,6 @@ free_codes(const char *tag, INST * base, size_t size)
 	    ++cdp;		/* skip value */
 	    TRACE(("\tparam %p\n", cdp->ptr));
 	    break;
-	case _PUSHC:
 	case _PUSHD:
 	    ++cdp;		/* skip value */
 	    TRACE(("\tparam %p\n", cdp->ptr));
@@ -413,6 +412,7 @@ free_codes(const char *tag, INST * base, size_t size)
 	case _LJZ:
 	case _LJNZ:
 	case _JMP:
+	case _PUSHC:
 	case ALOOP:
 	case LAE_PUSHI:
 	case SET_ALOOP:
