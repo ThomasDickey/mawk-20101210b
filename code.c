@@ -249,7 +249,7 @@ be_setup(int scope)
 }
 
 #ifdef NO_LEAKS
-static void
+void
 free_cell_data(CELL * cp)
 {
     switch (cp->type) {
