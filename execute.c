@@ -1133,17 +1133,24 @@ execute(INST * cdp,		/* code ptr, start execution here */
 	    cdp = end_start;
 	    force_exit = 1;	/* makes sure next exit exits */
 
-	    if (begin_start)
-		zfree(begin_start, begin_size);
-	    if (main_start)
-		zfree(main_start, main_size);
+	    if (begin_start) {
+		free_codes("BEGIN", begin_start, begin_size);
+		begin_start = 0;
+		begin_size = 0;
+	    }
+	    if (main_start) {
+		free_codes("MAIN", main_start, main_size);
+		main_start = 0;
+		main_size = 0;
+	    }
 	    sp = eval_stack - 1;	/* might be in user function */
 	    CLEAR_ALOOP_STACK();	/* ditto */
 	    break;
 
 	case _JMAIN:		/* go from BEGIN code to MAIN code */
-	    zfree(begin_start, begin_size);
-	    begin_start = (INST *) 0;
+	    free_codes("BEGIN", begin_start, begin_size);
+	    begin_start = 0;
+	    begin_size = 0;
 	    cdp = main_start;
 	    break;
 
