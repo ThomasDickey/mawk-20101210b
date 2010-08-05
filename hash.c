@@ -32,6 +32,10 @@ the GNU General Public License, version 2, 1991.
 #include "memory.h"
 #include "symtype.h"
 
+#ifdef NO_LEAKS
+#include "bi_vars.h"
+#endif
+
 /*                                                                              
  * FNV-1 hash function
  * http://www.isthe.com/chongo/tech/comp/fnv/index.html
@@ -263,6 +267,7 @@ hash_leaks(void)
 {
     int i;
     HASHNODE *p;
+    CELL *cp;
 
     TRACE(("hash_leaks\n"));
     for (i = 0; i < HASH_PRIME; i++) {
@@ -275,6 +280,20 @@ hash_leaks(void)
 			   p->symtab.stval.fbp->code,
 			   p->symtab.stval.fbp->size);
 		zfree(p->symtab.stval.fbp, sizeof(FBLOCK));
+		break;
+	    case ST_VAR:
+		cp = p->symtab.stval.cp;
+		if (cp != 0
+		    && (cp < bi_vars || cp > bi_vars + NUM_BI_VAR)) {
+		    switch (cp->type) {
+		    case C_STRING:
+		    case C_STRNUM:
+		    case C_MBSTRN:
+			free_STRING(string(cp));
+			break;
+		    }
+		    zfree(cp, sizeof(CELL));
+		}
 		break;
 	    }
 	    zfree(p, sizeof(HASHNODE));
