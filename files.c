@@ -476,8 +476,9 @@ get_pipe(char *name, int type, int *pid_ptr)
 	break;
     }
 
-    return type == PIPE_IN ? (PTR) FINdopen(local_fd, 0) :
-	(PTR) fdopen(local_fd, "w");
+    return ((type == PIPE_IN)
+	    ? (PTR) FINdopen(local_fd, 0)
+	    : (PTR) fdopen(local_fd, "w"));
 }
 
 /*------------ children ------------------*/
