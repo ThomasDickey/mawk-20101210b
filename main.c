@@ -98,6 +98,7 @@ mawk_exit(int x)
     hash_leaks();
     array_leaks();
     files_leaks();
+    fin_leaks();
     field_leaks();
     zmalloc_leaks();
 #if OPT_TRACE > 0
