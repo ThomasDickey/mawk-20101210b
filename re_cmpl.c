@@ -95,6 +95,8 @@ re_compile(STRING * sval)
     sval->ref_cnt++;
     p->re.anchored = (*s == '^');
     if (!(p->re.compiled = REcompile(s, sval->len))) {
+	ZFREE(p);
+	sval->ref_cnt--;
 	if (mawk_state == EXECUTION)
 	    rt_error(efmt, REerror(), s);
 	else {			/* compiling */
