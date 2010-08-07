@@ -298,8 +298,6 @@ free_codes(const char *tag, INST * base, size_t size)
 	case AE_PUSHI:
 	case A_CAT:
 	case LAE_PUSHA:
-	case _MATCH0:
-	case _MATCH1:
 	    ++cdp;		/* skip pointer */
 	    cp = (CELL *) (cdp->ptr);
 	    if (cp != 0) {
@@ -308,6 +306,11 @@ free_codes(const char *tag, INST * base, size_t size)
 	    } else {
 		TRACE(("\tparam %p type ??\n", cp));
 	    }
+	    break;
+	case _MATCH0:
+	case _MATCH1:
+	    ++cdp;		/* skip pointer */
+	    re_destroy(cdp->ptr);
 	    break;
 	case A_PUSHA:
 	case L_PUSHA:
