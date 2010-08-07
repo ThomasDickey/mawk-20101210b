@@ -1,4 +1,4 @@
-/* $MawkId: regexp.c,v 1.3 2010/07/30 08:18:29 tom Exp $ */
+/* $MawkId: regexp.c,v 1.4 2010/07/31 00:15:13 tom Exp $ */
 #ifdef LOCAL_REGEXP
 #		include "mawk.h"
 #		include "rexp.c"
@@ -17,6 +17,7 @@
 void
 rexp_leaks(void)
 {
+    TRACE(("rexp_leaks\n"));
 #ifdef LOCAL_REGEXP
     if (bv_base) {
 	BV **p = bv_base;
