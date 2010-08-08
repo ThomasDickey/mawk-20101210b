@@ -442,3 +442,36 @@ d_to_U(double d)
 	return (UInt) d;
     return 0;
 }
+
+#ifdef NO_LEAKS
+typedef struct _all_cells {
+    struct _all_cells *next;
+    CELL *cp;
+} ALL_CELLS;
+
+static ALL_CELLS *all_cells;
+/*
+ * Some regular expressions are parsed, and the pointer stored in the byte-code
+ * where we cannot distinguish it from other constants.  Keep a list here, to
+ * free on exit for auditing.
+ */
+void
+no_leaks_cell(CELL * cp)
+{
+    ALL_CELLS *p = calloc(1, sizeof(ALL_CELLS));
+    p->next = all_cells;
+    p->cp = cp;
+    all_cells = p;
+}
+
+void
+cell_leaks(void)
+{
+    while (all_cells != 0) {
+	ALL_CELLS *next = all_cells->next;
+	free_cell_data(all_cells->cp);
+	free(all_cells);
+	all_cells = next;
+    }
+}
+#endif
