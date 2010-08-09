@@ -222,6 +222,7 @@ extern const char *da_op_name(INST *);
 extern void free_cell_data(CELL *);
 extern void free_codes(const char *, INST *, size_t);
 extern void no_leaks_cell(CELL *);
+extern void no_leaks_cell_ptr(CELL *);
 extern void no_leaks_re_ptr(PTR);
 
 extern void array_leaks(void);
@@ -242,6 +243,7 @@ extern void zmalloc_leaks(void);
 
 #define free_codes(tag, base, size) zfree(base, size)
 #define no_leaks_cell(ptr)	/* nothing */
+#define no_leaks_cell_ptr(ptr)	/* nothing */
 #define no_leaks_re_ptr(ptr)	/* nothing */
 
 #endif
