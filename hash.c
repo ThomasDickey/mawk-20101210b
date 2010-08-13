@@ -295,6 +295,8 @@ free_hashnode(HASHNODE * p)
 	free_codes(p->symtab.name,
 		   p->symtab.stval.fbp->code,
 		   p->symtab.stval.fbp->size);
+	if (p->symtab.stval.fbp->nargs)
+	    zfree(p->symtab.stval.fbp->typev, p->symtab.stval.fbp->nargs);
 	zfree(p->symtab.stval.fbp, sizeof(FBLOCK));
 	break;
     case ST_NONE:
