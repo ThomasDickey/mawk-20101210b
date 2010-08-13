@@ -399,7 +399,10 @@ p_expr  :   DOUBLE
       ;
 
 p_expr  :   RE
-            { $$ = code_offset ; code2(_MATCH0, $1) ; }
+            { $$ = code_offset ;
+	      code2(_MATCH0, $1) ;
+	      no_leaks_re_ptr($1);
+	    }
         ;
 
 p_expr  :   p_expr  PLUS   p_expr { code1(_ADD) ; }
@@ -1343,7 +1346,7 @@ static void RE_as_arg(void)
     cp->type = C_RE ;
     cp->ptr = code_ptr[1].ptr ;
     code2(_PUSHC, cp) ;
-    /* FIXME - no_leaks_cell(cp); */
+    no_leaks_cell_ptr(cp);
 }
 
 /* reset the active_code back to the MAIN block */
