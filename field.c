@@ -205,8 +205,23 @@ static void
 destroy_field0(void)
 {
     cell_destroy(&field[0]);
+
     while (nf > 0) {
-	cell_destroy(field + nf);
+	CELL *cp = field + nf;
+	int count;
+
+	switch (cp->type) {
+	case C_STRING:
+	case C_STRNUM:
+	case C_MBSTRN:
+	    if ((count = string(cp)->ref_cnt) != 0) {
+		cell_destroy(cp);
+		if (count == 1) {
+		    cp->type = C_NOINIT;
+		}
+	    }
+	    break;
+	}
 	USED_SPLIT_BUFF(nf);
 	--nf;
     }
@@ -285,6 +300,18 @@ split_field0(void)
     }
 }
 
+#define destroy_field(n) \
+	cp = field_ptr(n); \
+	switch (cp->type) { \
+	case C_STRING: \
+	case C_STRNUM: \
+	case C_MBSTRN: \
+	    if (string(cp) != &null_str) { \
+		cell_destroy(cp); \
+	    } \
+	    break; \
+	}
+
 /*
   assign CELL *cp to field or pseudo field
   and take care of all side effects
@@ -329,8 +356,7 @@ field_assign(CELL * fp, CELL * cp)
 
 	if (j > nf)
 	    for (i = nf + 1; i <= j; i++) {
-		cp = field_ptr(i);
-		cell_destroy(cp);
+		destroy_field(i);
 		cp->type = C_STRING;
 		cp->ptr = (PTR) & null_str;
 		null_str.ref_cnt++;
@@ -393,8 +419,7 @@ field_assign(CELL * fp, CELL * cp)
 
 	if (i > nf) {
 	    for (j = nf + 1; j < i; j++) {
-		cp = field_ptr(j);
-		cell_destroy(cp);
+		destroy_field(j);
 		cp->type = C_STRING;
 		cp->ptr = (PTR) & null_str;
 		null_str.ref_cnt++;
