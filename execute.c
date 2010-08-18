@@ -1482,8 +1482,7 @@ DB_cell_destroy(CELL * cp)
     case C_MBSTRN:
     case C_STRING:
     case C_STRNUM:
-	if (--string(cp)->ref_cnt == 0)
-	    zfree(string(cp), string(cp)->len + STRING_OH);
+	free_STRING(string(cp));
 	break;
 
     case C_RE:
