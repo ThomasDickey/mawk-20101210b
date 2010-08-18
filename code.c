@@ -317,7 +317,7 @@ free_codes(const char *tag, INST * base, size_t size)
 	    case LA_PUSHA:
 	    case A_CAT:
 		++cdp;		/* skip value */
-		TRACE(("\tparam %p\n", cdp->op));
+		TRACE(("\tparam %d\n", cdp->op));
 		break;
 	    case A_PUSHA:
 	    case L_PUSHA:
