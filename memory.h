@@ -44,8 +44,9 @@ void DB_free_STRING(STRING *);
 
 #define  free_STRING(sval) \
 	    do { \
-		if ( -- (sval)->ref_cnt == 0 ) \
-		    zfree(sval, (sval)->len+STRING_OH) ; \
+		if ( -- (sval)->ref_cnt == 0 && \
+		    sval != &null_str ) \
+		    zfree(sval, (sval)->len + STRING_OH) ; \
 	    } while (0)
 #endif
 

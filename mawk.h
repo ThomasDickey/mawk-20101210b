@@ -144,8 +144,9 @@ extern unsigned rt_nr, rt_fnr;	/* ditto */
 #define cell_destroy(cp) \
 	do { \
 	    if ( (cp)->type >= C_STRING && \
-	       -- string(cp)->ref_cnt == 0 ) \
-	    zfree(string(cp),string(cp)->len+STRING_OH); \
+	         (cp)->type <= C_MBSTRN ) { \
+		free_STRING(string(cp));  \
+	    } \
 	} while (0)
 #endif
 
