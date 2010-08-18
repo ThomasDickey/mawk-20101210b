@@ -102,6 +102,8 @@ bi_vars_leaks(void)
     for (n = 0; n < NUM_BI_VAR; ++n) {
 	switch (bi_vars[n].type) {
 	case C_STRING:
+	case C_STRNUM:
+	case C_MBSTRN:
 	    free_STRING(string(&bi_vars[n]));
 	    break;
 	}
