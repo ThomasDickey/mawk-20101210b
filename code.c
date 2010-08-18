@@ -299,8 +299,6 @@ free_codes(const char *tag, INST * base, size_t size)
 	    switch ((MAWK_OPCODES) (cdp->op)) {
 	    case AE_PUSHA:
 	    case AE_PUSHI:
-	    case A_CAT:
-	    case LAE_PUSHA:
 		++cdp;		/* skip pointer */
 		cp = (CELL *) (cdp->ptr);
 		if (cp != 0) {
@@ -315,10 +313,15 @@ free_codes(const char *tag, INST * base, size_t size)
 		++cdp;		/* skip pointer */
 		re_destroy(cdp->ptr);
 		break;
+	    case LAE_PUSHA:
+	    case LA_PUSHA:
+	    case A_CAT:
+		++cdp;		/* skip value */
+		TRACE(("\tparam %p\n", cdp->op));
+		break;
 	    case A_PUSHA:
 	    case L_PUSHA:
 	    case L_PUSHI:
-	    case LA_PUSHA:
 	    case _BUILTIN:
 	    case _PRINT:
 	    case _PUSHA:
