@@ -114,7 +114,7 @@ re_compile(STRING * sval)
 
 #ifdef DEBUG
     if (dump_RE)
-	REmprint(refRE_DATA(p->re), stderr);
+	REmprint(p->re.compiled, stderr);
 #endif
     return refRE_DATA(p->re);
 }
