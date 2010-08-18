@@ -97,8 +97,10 @@ new_STRING(const char *s)
 void
 DB_free_STRING(STRING * sval)
 {
-    if (--sval->ref_cnt == 0)
+    if (--sval->ref_cnt == 0 &&
+	sval != &null_str) {
 	zfree(sval, sval->len + STRING_OH);
+    }
 }
 
 #endif
