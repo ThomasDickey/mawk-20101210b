@@ -1,4 +1,14 @@
-# $MawkId: reg5.awk,v 1.1 2009/07/27 18:55:24 tom Exp $
+# $MawkId: reg5.awk,v 1.2 2009/09/17 00:51:34 tom Exp $
+# Test-script for MAWK
+###############################################################################
+# copyright 2009, Thomas E. Dickey
+#
+# This is a source file for mawk, an implementation of
+# the AWK programming language.
+#
+# Mawk is distributed without warranty under the terms of
+# the GNU General Public License, version 2, 1991.
+###############################################################################
 BEGIN {
 	pat1="([[:upper:][:digit:]])+(_[[:upper:][:digit:]]+)+"
 	pat2="0x[[:xdigit:]]+"

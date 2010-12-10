@@ -1,6 +1,8 @@
 /********************************************
 rexp2.c
-copyright 1991, Michael D. Brennan
+copyright 2009,2010, Thomas E. Dickey
+copyright 2010, Jonathan Nieder
+copyright 1991-1992,1993, Michael D. Brennan
 
 This is a source file for mawk, an implementation of
 the AWK programming language.

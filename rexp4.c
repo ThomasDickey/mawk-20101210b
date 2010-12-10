@@ -1,5 +1,17 @@
 /*
- * $MawkId: rexp4.c,v 1.4 2009/07/12 18:26:22 tom Exp $
+regexp_system.c
+copyright 2009, Thomas E. Dickey
+copyright 2005, Aleksey Cheusov
+
+This is a source file for mawk, an implementation of
+the AWK programming language.
+
+Mawk is distributed without warranty under the terms of
+the GNU General Public License, version 2, 1991.
+ */
+
+/*
+ * $MawkId: rexp4.c,v 1.5 2009/07/24 21:41:25 tom Exp $
  */
 #include "mawk.h"
 #include "rexp.h"

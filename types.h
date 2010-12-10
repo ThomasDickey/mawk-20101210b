@@ -1,6 +1,7 @@
 /********************************************
 types.h
-copyright 1991, Michael D. Brennan
+copyright 2009,2010, Thomas E. Dickey
+copyright 1991,1993, Michael D. Brennan
 
 This is a source file for mawk, an implementation of
 the AWK programming language.
@@ -10,7 +11,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId: types.h,v 1.6 2010/04/18 22:03:27 tom Exp $
+ * $MawkId: types.h,v 1.8 2010/07/28 01:04:09 tom Exp $
  * @Log: types.h,v @
  * Revision 1.3  1993/07/15  23:56:18  mike
  * general cleanup

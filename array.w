@@ -1078,9 +1078,10 @@ This file was generated with the command
 
 <<mawk blurb>>=
 
-$MawkId: array.w,v 1.13 2010/05/07 22:20:12 tom Exp $
+$MawkId: array.w,v 1.14 2010/06/25 22:31:42 tom Exp $
 
-copyright 1991-96, Michael D. Brennan
+copyright 2009,2010, Thomas E. Dickey
+copyright 1991-1996, Michael D. Brennan
 
 This is a source file for mawk, an implementation of
 the AWK programming language.

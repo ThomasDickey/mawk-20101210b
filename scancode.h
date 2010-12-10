@@ -1,5 +1,6 @@
 /********************************************
 scancode.h
+copyright 2009, Jonathan Nieder
 copyright 1991, Michael D. Brennan
 
 This is a source file for mawk, an implementation of
@@ -10,7 +11,7 @@ the GNU General Public License, version 2, 1991.
 ********************************************/
 
 /*
- * $MawkId$
+ * $MawkId: scancode.h,v 1.1 2009/12/13 19:43:23 Jonathan.Nieder Exp $
  * @Log: scancode.h,v @
  */
 
